@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="es" data-sitecd="es-es" data-author="0">
+
+<head>
+    <script src="js/container.min.js"></script>
+    <script src="js/clientlib-base.min.js"></script>
+
+    <!-- Este css si trabaja en la animacion -->
+    <link rel="stylesheet" href="styles/clientlib-local.min.css" type="text/css">
+
+</head>
+
+<body>
+    <div data-scroll-container data-direction>
+        <main id="main" class="main">
+            <div class="index">
+                <div class="free-coding-component parbase">
+                    <div>
+                        <section class="fcc">
+                            <style>
+                                @charset "UTF-8";
+
+                                * {
+                                    box-sizing: border-box;
+                                }
+
+                                body::-webkit-scrollbar {
+                                    width: 0;
+                                }
+
+                                body br.m {
+                                    display: none;
+                                }
+
+                                .hidden {
+                                    display: none !important;
+                                }
+
+                                #main {
+                                    position: relative;
+                                    padding-top: 0;
+                                }
+
+                                .scroll_wrapper {
+                                    min-width: 1280px;
+                                    min-height: var(--app-height, 100vh);
+                                    overflow-y: hidden !important;
+                                }
+
+                                .tire_wrapper {
+                                    position: relative;
+                                    overflow: hidden;
+                                }
+
+                                .tire_wrapper .dim {
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    z-index: 1;
+                                    background: #000;
+                                }
+
+                                .tire_wrapper video {
+                                    object-fit: fill;
+                                }
+
+                                .tire_wrapper .tire_section {
+                                    position: relative;
+                                    background: #111;
+                                    color: #fff;
+                                }
+
+                                .tire_wrapper .tire_section .tire_section_inner {
+                                    position: relative;
+                                }
+
+                                .tire_wrapper .tire_section_keyword {
+                                    top: 0;
+                                    bottom: 0;
+                                    right: 0;
+                                    left: 0;
+                                    overflow: hidden;
+                                    width: 100%;
+                                    height: calc(var(--app-height, 100vh) * 30.4);
+                                }
+
+                                .tire_wrapper .tire_section_keyword .tire_content_inner,
+                                .tire_wrapper .tire_section_keyword .video_canvas-inner {
+                                    height: 100%;
+                                }
+
+                                .tire_wrapper .tire_section_keyword .tire_keyword_con_area {
+                                    margin-top: calc(var(--app-height, 100vh) * -32.4);
+                                    pointer-events: none;
+                                }
+
+                                .tire_wrapper .tire_section_keyword .tire_keyword_con_area .intro .btn {
+                                    pointer-events: auto;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword1 {
+                                    height: calc(var(--app-height, 100vh) * 15.9);
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword1 .tire_keyword_con_area {
+                                    margin-top: calc(var(--app-height, 100vh) * -18);
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword2 {
+                                    height: calc(var(--app-height, 100vh) * 23.06);
+                                    margin-top: calc(var(--app-height, 100vh) * -5.5);
+                                    background-color: transparent;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_content_inner {
+                                    z-index: 1;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_keyword_con_area {
+                                    position: relative;
+                                    margin-top: calc(var(--app-height, 100vh) * -22.56);
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword3 {
+                                    height: calc(var(--app-height, 100vh) * 15.96);
+                                    margin-top: calc(var(--app-height, 100vh) * -10.8);
+                                    z-index: 1;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner {
+                                    z-index: 1;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner .video_canvas .video_canvas-inner .canvas {
+                                    overflow: hidden;
+                                    opacity: 0;
+                                    margin: 0 auto;
+                                }
+
+                                .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_keyword_con_area {
+                                    position: relative;
+                                    z-index: 1;
+                                    margin-top: calc(var(--app-height, 100vh) * -16.96);
+                                }
+
+                                .video_canvas {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    -webkit-transform-origin: top;
+                                    transform-origin: top;
+                                }
+
+                                .video_canvas .canvas,
+                                .video_canvas .video {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                }
+
+                                .video_canvas .canvas canvas,
+                                .video_canvas .canvas video,
+                                .video_canvas .video canvas,
+                                .video_canvas .video video {
+                                    position: absolute;
+                                    left: 50%;
+                                    top: calc(var(--app-height, 100vh) * 0.5);
+                                    bottom: auto;
+                                    min-width: calc(var(--app-height, 100vh) * 1.7782);
+                                    width: 100vw;
+                                    -webkit-transform: translate(-50%, -50%);
+                                    transform: translate(-50%, -50%);
+                                    transition: transform 0.8s;
+                                }
+
+                                .video_canvas .video_canvas-inner .canvas {
+                                    background: no-repeat 50% 50%;
+                                    background-size: cover;
+                                }
+
+                                .video_canvas .video_canvas-inner .canvas.web {
+                                    width: 100vw;
+                                    height: var(--app-height, 100vh);
+                                }
+
+                                .video_canvas .video_canvas-inner .canvas.mobile {
+                                    display: none;
+                                }
+
+                                #tireKeyword1 .video_canvas #tireKeyword2 .video_canvas,
+                                #tireKeyword3 .video_canvas {
+                                    position: relative;
+                                }
+
+                                .sticky_con_area {
+                                    position: relative;
+                                    height: calc(var(--app-height, 100vh) * 2.5);
+                                    margin-top: 0;
+                                }
+
+                                .sticky_con_area.intro {
+                                    height: var(--app-height, 100vh);
+                                    margin-top: calc(var(--app-height, 100vh) * 1.6);
+                                }
+
+                                .sticky_con_area.text1 {
+                                    height: calc(var(--app-height, 100vh) * 2.7);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.5);
+                                }
+
+                                .sticky_con_area.text2 {
+                                    height: calc(var(--app-height, 100vh) * 2.7);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.6);
+                                }
+
+                                .sticky_con_area.text2 .sticky_con_inner .sticky_con p span {
+                                    display: block;
+                                    text-align: center;
+                                }
+
+                                .sticky_con_area.text3 {
+                                    height: calc(var(--app-height, 100vh) * 4);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.2);
+                                }
+
+                                .sticky_con_area.perform {
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    margin-top: calc(var(--app-height, 100vh) * 0.5);
+                                }
+
+                                .sticky_con_area.handling_intro {
+                                    height: calc(var(--app-height, 100vh) * 3.5);
+                                    margin-top: calc(var(--app-height, 100vh) * -1);
+                                }
+
+                                .sticky_con_area.handling_intro .bg {
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    -webkit-transform-origin: center;
+                                    transform-origin: center;
+                                    background-color: #fff;
+                                    z-index: -1;
+                                }
+
+                                .sticky_con_area.handling_intro .skipScroll {
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: 0;
+                                    width: 100%;
+                                    height: calc(var(--app-height, 100vh) * 2.9);
+                                    margin-bottom: calc(var(--app-height, 100vh) * -1.1);
+                                    z-index: 1;
+                                }
+
+                                .sticky_con_area.handling_intro .skipScroll div {
+                                    font-size: 0;
+                                }
+
+                                .sticky_con_area.handling_intro .skipScroll #skipStart {
+                                    position: absolute;
+                                    top: 0;
+                                }
+
+                                .sticky_con_area.handling_intro .skipScroll #skipEnd {
+                                    position: absolute;
+                                    bottom: 0;
+                                }
+
+                                .sticky_con_area.handling_spec {
+                                    height: calc(var(--app-height, 100vh) * 4.5);
+                                    margin-top: calc(var(--app-height, 100vh) * -1.6);
+                                }
+
+                                .sticky_con_area.expanding1 {
+                                    height: calc(var(--app-height, 100vh) * 4);
+                                    margin-top: calc(var(--app-height, 100vh) * 1);
+                                }
+
+                                .sticky_con_area.expanding1 .sticky_con_inner .sticky_con {
+                                    position: relative;
+                                    left: 10.3125vw;
+                                }
+
+                                .sticky_con_area.expanding2 {
+                                    height: calc(var(--app-height, 100vh) * 2.5);
+                                    margin-top: calc(var(--app-height, 100vh) * 0.8);
+                                }
+
+                                .sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+                                    -webkit-transform: translateX(calc(50% + 10.625vw));
+                                    transform: translateX(calc(50% + 10.625vw));
+                                }
+
+                                @media all and (max-width: 1366px) {
+                                    .sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+                                        -webkit-transform: translateX(calc(50% + 6.625vw));
+                                        transform: translateX(calc(50% + 6.625vw));
+                                    }
+                                }
+
+                                .sticky_con_area.speed_intro {
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    margin-top: calc(var(--app-height, 100vh) * 3.6);
+                                }
+
+                                .sticky_con_area.speed_intro .bg {
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    width: 100%;
+                                    height: var(--app-height, 100vh);
+                                    -webkit-transform-origin: center;
+                                    transform-origin: center;
+                                    background-color: #000;
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con,
+                                .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con,
+                                .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+                                    position: relative;
+                                    right: 10.41667vw;
+                                    bottom: calc(var(--app-height, 100vh) * 0.154629);
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box,
+                                .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box,
+                                .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box {
+                                    color: #fff;
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p,
+                                .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p,
+                                .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p {
+                                    max-width: 56rem;
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                    padding-right: 8rem;
+                                }
+
+                                .sticky_con_area.speed_text1 {
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.8);
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con {
+                                    position: relative;
+                                    right: 10.41667vw;
+                                    bottom: calc(var(--app-height, 100vh) * 0.154629);
+                                }
+
+                                .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                    padding-right: 11rem;
+                                }
+
+                                .sticky_con_area.speed_text2 {
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.3);
+                                }
+
+                                .sticky_con_area.speed_text3 {
+                                    height: calc(var(--app-height, 100vh) * 1.2);
+                                    margin-top: calc(var(--app-height, 100vh) * -0.2);
+                                }
+
+                                .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+                                    bottom: calc(var(--app-height, 100vh) * 0.135185);
+                                }
+
+                                .sticky_con_area.speed_text4 {
+                                    height: calc(var(--app-height, 100vh) * 3);
+                                    margin-top: calc(var(--app-height, 100vh) * 0);
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner {
+                                    position: relative;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+                                    position: relative;
+                                    left: 10.4167vw;
+                                    bottom: calc(var(--app-height, 100vh) * 0.222222);
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box {
+                                    display: none;
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    right: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div {
+                                    position: absolute;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.strong {
+                                    top: 50%;
+                                    left: 50%;
+                                    margin-top: calc(var(--app-height, 100vh) * 0.041667);
+                                    margin-left: -5.4167vw;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.weak {
+                                    top: 50%;
+                                    left: 50%;
+                                    margin-top: calc(var(--app-height, 100vh) * -0.4);
+                                    margin-left: 7.5208vw;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar {
+                                    width: 11.4rem;
+                                    height: 2px;
+                                    background-color: rgba(255, 255, 255, 0.2);
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar:before {
+                                    display: block;
+                                    content: "";
+                                    width: 70%;
+                                    height: 100%;
+                                    background-color: #fff;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p {
+                                    font-size: 1.6rem;
+                                    font-weight: 500;
+                                    margin-top: 0.8rem;
+                                }
+
+                                .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p span {
+                                    display: inline-block;
+                                    vertical-align: baseline;
+                                    font-size: 1.2rem;
+                                    font-weight: 500;
+                                    margin-left: 0.8rem;
+                                }
+
+                                .sticky_con_area * {
+                                    color: #fff;
+                                }
+
+                                .sticky_con_area.black * {
+                                    color: #000;
+                                }
+
+                                .sticky_con_area.black .sticky_con_inner .sticky_con .perform_box .desc {
+                                    color: #000;
+                                }
+
+                                .sticky_con_area .sticky_con_inner {
+                                    position: relative;
+                                    display: flex;
+                                    height: var(--app-height, 100vh);
+                                    padding: 0;
+                                    /* COMMON TEXT SECTION */
+                                    /* CUSTOM TEXT SECTION */
+                                }
+
+                                .sticky_con_area .sticky_con_inner.white {
+                                    background-color: #fff;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.space {
+                                    justify-content: space-between;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.top_left {
+                                    align-items: start;
+                                    justify-content: left;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.top_right {
+                                    align-items: start;
+                                    justify-content: right;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.bottom_left {
+                                    align-items: flex-end;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.bottom_right {
+                                    align-items: flex-end;
+                                    justify-content: right;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.center_left {
+                                    align-items: center;
+                                    justify-content: left;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.center_right {
+                                    align-items: center;
+                                    justify-content: right;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.center_center {
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+
+                                .sticky_con_area .sticky_con_inner.center_center .perform_box,
+                                .sticky_con_area .sticky_con_inner.center_left .perform_box,
+                                .sticky_con_area .sticky_con_inner.center_right .perform_box {
+                                    margin-top: 7.5rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .center_text {
+                                    font-size: 6.4rem;
+                                    font-weight: 600;
+                                    line-height: 1.25;
+                                    color: #fff;
+                                    text-align: center;
+                                    letter-spacing: -0.015rem;
+                                    margin-top: 7rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .center_text.black {
+                                    color: #000;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .perform_box p {
+                                    max-width: 46rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .perform_box p.title {
+                                    font-size: 4rem;
+                                    font-weight: 600;
+                                    line-height: 1.2;
+                                    letter-spacing: -0.0015rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .perform_box p.desc {
+                                    font-size: 1.8rem;
+                                    font-weight: 500;
+                                    color: #fff;
+                                    line-height: 1.67;
+                                    letter-spacing: -0.016rem;
+                                    margin-top: 1.6rem;
+                                }
+
+                                @media all and (max-width: 767px) {
+                                    .sticky_con_area .sticky_con_inner .perform_box p.desc .m_hide {
+                                        display: none;
+                                    }
+                                }
+
+                                .sticky_con_area .sticky_con_inner .perform_box video {
+                                    width: 36rem;
+                                    height: 20rem;
+                                    margin-top: 3.2rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_intro_text {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    right: 0;
+                                    text-align: center;
+                                    margin-top: -9rem;
+                                    /* font-family: "Hankook, sans-serif";*/
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_intro_text h2 {
+                                    width: 100vw;
+                                    height: 4.6875vw;
+                                    font-size: 0;
+                                    background: url("assets/ventus129/logo-ventus.svg") no-repeat 50% 50%;
+                                    background-size: contain;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_intro_text .text {
+                                    text-align: center;
+                                    margin-top: 0.8rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_intro_text .text span {
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    font-size: 1.8rem;
+                                    font-weight: 600;
+                                    letter-spacing: 0.144rem;
+                                    text-transform: uppercase;
+                                    padding: 4.8rem 3.2rem 4rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_intro_text .buy_btn {
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    width: 12.6rem;
+                                    height: 4.8rem;
+                                    font-size: 1.6rem;
+                                    font-weight: 500;
+                                    color: #fff;
+                                    line-height: 4.8rem;
+                                    letter-spacing: -0.016rem;
+                                    border-radius: 2.4rem;
+                                    background-color: #000;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .tire_perform {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    margin-top: calc(var(--app-height, 100vh) * -0.3461);
+                                    margin-left: 3vw;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec {
+                                    position: relative;
+                                    width: 100%;
+                                    margin-top: calc(var(--app-height, 100vh) * -0.5);
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .img {
+                                    position: relative;
+                                    right: 2rem;
+                                    overflow: hidden;
+                                    width: 0;
+                                    height: calc(var(--app-height, 100vh) * 0.5);
+                                    margin-top: calc(var(--app-height, 100vh) * 0.5);
+                                    margin-left: auto;
+                                    background-size: cover;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .img span {
+                                    display: block;
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    width: 100vw;
+                                    height: 100%;
+                                    background: no-repeat 100% 50%;
+                                    background-size: cover;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .img.img1 span {
+                                    background-image: url("assets/ventus129/bg2.jpg");
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 {
+                                    position: absolute;
+                                    top: calc(var(--app-height, 100vh) * 0.5);
+                                    margin-top: 0;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 span {
+                                    background-image: url("assets/ventus129/bg1.jpg");
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area {
+                                    display: flex;
+                                    height: calc(var(--app-height, 100vh) * 0.5 - 40px);
+                                    padding-bottom: calc(var(--app-height, 100vh) * 0.083334);
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div {
+                                    position: relative;
+                                    flex: 1;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right {
+                                    text-align: right;
+                                    padding-right: 6.25vw;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p {
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    text-align: left;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_sum {
+                                    position: absolute;
+                                    left: 6.25vw;
+                                    bottom: 0;
+                                    opacity: 0;
+                                    font-size: 7.2rem;
+                                    font-weight: 600;
+                                    font-style: oblique;
+                                    line-height: 1.22;
+                                    letter-spacing: -0.072rem;
+                                    color: #e33d00;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_title {
+                                    display: block;
+                                    width: 46rem;
+                                    font-size: 4rem;
+                                    font-weight: 600;
+                                    line-height: 1.2;
+                                    letter-spacing: -0.0015rem;
+                                    color: #000;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc {
+                                    width: 46rem;
+                                    color: #000;
+                                    font-size: 1.8rem;
+                                    font-weight: 500;
+                                    line-height: 1.67;
+                                    letter-spacing: -0.016rem;
+                                    margin-top: 1.6rem;
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc .m_hide {
+                                    color: #000;
+                                }
+
+                                @media all and (max-width: 767px) {
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc .m_hide {
+                                        display: none;
+                                    }
+                                }
+
+                                .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div .info {
+                                    position: absolute;
+                                    right: 6.25vw;
+                                    bottom: 0;
+                                }
+
+                                .nav-anchor#breaking {
+                                    margin-top: calc(var(--app-height, 100vh) * 1.2);
+                                }
+
+                                .nav-anchor#handling {
+                                    margin-top: calc(var(--app-height, 100vh) * 1);
+                                }
+
+                                .nav-anchor#stability {
+                                    margin-top: calc(var(--app-height, 100vh) * 1.4);
+                                }
+
+                                #tireEnding img.mobile {
+                                    display: none;
+                                }
+
+                                @media all and (max-width: 1024px) {
+                                    .tire_wrapper .tire_section_keyword#tireKeyword1 {
+                                        height: calc(var(--app-height, 100vh) * 8.56);
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword1 .tire_keyword_con_area {
+                                        margin-top: calc(var(--app-height, 100vh) * -10.56);
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword2 {
+                                        height: calc(var(--app-height, 100vh) * 8.9481);
+                                        margin-top: calc(var(--app-height, 100vh) * -2);
+                                        background-color: transparent;
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_content_inner {
+                                        z-index: 1;
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_keyword_con_area {
+                                        position: relative;
+                                        margin-top: calc(var(--app-height, 100vh) * -8.9481);
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword3 {
+                                        height: calc(var(--app-height, 100vh) * 8.8965);
+                                        margin-top: calc(var(--app-height, 100vh) * -2.6);
+                                        z-index: 1;
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner {
+                                        z-index: 1;
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner .video_canvas .video_canvas-inner .canvas {
+                                        overflow: hidden;
+                                        opacity: 0;
+                                        margin: 0 auto;
+                                    }
+
+                                    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_keyword_con_area {
+                                        position: relative;
+                                        z-index: 1;
+                                        margin-top: calc(var(--app-height, 100vh) * -9.8965);
+                                    }
+
+                                    .video_canvas {
+                                        position: absolute;
+                                        width: 100vw;
+                                        height: calc(var(--app-height, 100vh) * 1.01);
+                                    }
+
+                                    .video_canvas .canvas canvas,
+                                    .video_canvas .canvas video,
+                                    .video_canvas .video canvas,
+                                    .video_canvas .video video {
+                                        min-width: 100vw;
+                                        height: var(--app-height, 100vh);
+                                        object-fit: cover;
+                                    }
+
+                                    .video_canvas .video_canvas-inner .canvas.web {
+                                        display: none;
+                                    }
+
+                                    .video_canvas .video_canvas-inner .canvas.mobile {
+                                        display: block;
+                                    }
+
+                                    /* (.sticky_con_area) 시퀀스 길이 */
+                                    .sticky_con_area {
+                                        height: var(--app-height, 100vh);
+                                        margin-top: 0;
+                                    }
+
+                                    .sticky_con_area.intro {
+                                        height: calc(var(--app-height, 100vh) * 0.8);
+                                        margin-top: calc(var(--app-height, 100vh) * 1.6);
+                                    }
+
+                                    .sticky_con_area.text1 {
+                                        height: calc(var(--app-height, 100vh) * 1.2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.3);
+                                    }
+
+                                    .sticky_con_area.text2 {
+                                        height: calc(var(--app-height, 100vh) * 1.2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.2);
+                                    }
+
+                                    .sticky_con_area.text3 {
+                                        height: calc(var(--app-height, 100vh) * 1.7);
+                                        margin-top: 0;
+                                    }
+
+                                    .sticky_con_area.perform {
+                                        height: calc(var(--app-height, 100vh) * 2.9);
+                                        margin-top: calc(var(--app-height, 100vh) * 0);
+                                    }
+
+                                    .sticky_con_area.handling_intro {
+                                        height: calc(var(--app-height, 100vh) * 1.75);
+                                        margin-top: calc(var(--app-height, 100vh) * -1);
+                                    }
+
+                                    .sticky_con_area.handling_intro .bg {
+                                        height: calc(var(--app-height, 100vh) * 1.5);
+                                    }
+
+                                    .sticky_con_area.handling_intro .skipScroll {
+                                        position: absolute;
+                                        left: 0;
+                                        bottom: 0;
+                                        width: 100%;
+                                        height: calc(var(--app-height, 100vh) * 1.9);
+                                        margin-bottom: calc(var(--app-height, 100vh) * -0.85);
+                                        z-index: 1;
+                                    }
+
+                                    .sticky_con_area.handling_spec {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.8);
+                                    }
+
+                                    .sticky_con_area.expanding1 {
+                                        height: calc(var(--app-height, 100vh) * 2.1);
+                                        margin-top: calc(var(--app-height, 100vh) * 0.7);
+                                    }
+
+                                    .sticky_con_area.expanding2 {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.5);
+                                    }
+
+                                    .sticky_con_area.speed_intro {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * 1.3);
+                                    }
+
+                                    .sticky_con_area.speed_text1 {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.4);
+                                    }
+
+                                    .sticky_con_area.speed_text2 {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.15);
+                                    }
+
+                                    .sticky_con_area.speed_text3 {
+                                        height: calc(var(--app-height, 100vh) * 0);
+                                        margin-top: calc(var(--app-height, 100vh) * 0);
+                                    }
+
+                                    .sticky_con_area.speed_text4 {
+                                        height: calc(var(--app-height, 100vh) * 2);
+                                        margin-top: calc(var(--app-height, 100vh) * 0.5);
+                                    }
+
+                                    /* (.sticky_con_area) 스타일 */
+                                    .sticky_con_area .sticky_con_inner.m_top {
+                                        align-items: flex-start;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner.m_top .perform_box {
+                                        margin-top: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner.m_top .perform_box video {
+                                        bottom: unset;
+                                        top: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner.m_bottom {
+                                        align-items: flex-end;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_con .perform_box {
+                                        padding: 0 2rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.title br,
+                                    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.desc br,
+                                    .sticky_con_area .sticky_con_inner .sticky_con .center_text br {
+                                        display: none;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.title br.m,
+                                    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.desc br.m,
+                                    .sticky_con_area .sticky_con_inner .sticky_con .center_text br.m {
+                                        display: block;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .tire_intro_text {
+                                        margin-top: 9.5rem;
+                                        top: unset;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .tire_intro_text h2 {
+                                        height: 6.1538vw;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .tire_intro_text .text span {
+                                        font-size: 1.2rem;
+                                        padding: 1.6rem 1.2rem 3.2rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .tire_perform {
+                                        position: relative;
+                                        top: unset;
+                                        left: unset;
+                                        margin: 0;
+                                        transform: none;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .center_text {
+                                        font-size: 3.2rem;
+                                        line-height: 1.25;
+                                        letter-spacing: 0.02rem;
+                                        padding: 0 2rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .center_text span {
+                                        display: inline;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .perform_box {
+                                        position: relative;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .perform_box p {
+                                        width: inherit;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .perform_box p.title {
+                                        font-size: 2.2rem;
+                                        line-height: 1.36;
+                                        letter-spacing: 0.006rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .perform_box p.desc {
+                                        font-size: 1.6rem;
+                                        line-height: 1.63;
+                                        letter-spacing: -0.016rem;
+                                        margin-top: 0.8rem;
+                                        padding: 0 0 4.8rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .perform_box video {
+                                        display: none;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec {
+                                        height: calc(var(--app-height, 100vh) * 1.5);
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .img {
+                                        right: 2rem;
+                                        height: calc(var(--app-height, 100vh) * 0.3242 + 6.2rem);
+                                        margin-top: calc(var(--app-height, 100vh) * 0.5 + 8.4rem);
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .img.img1 span {
+                                        background-image: url("assets/ventus129/bg2_m.jpg");
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 {
+                                        top: calc(var(--app-height, 100vh) * 0.5 + 8.4rem);
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 span {
+                                        background-image: url("assets/ventus129/bg1_m.jpg");
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area {
+                                        position: absolute;
+                                        bottom: 0;
+                                        display: block;
+                                        height: auto;
+                                        padding: 0 2rem 4.8rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div {
+                                        flex: none;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum {
+                                        position: relative;
+                                        left: 0;
+                                        font-size: 1.2rem;
+                                        font-style: inherit;
+                                        letter-spacing: -0.012rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum.spec_sum2 {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum br {
+                                        display: none;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right {
+                                        padding-right: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info {
+                                        position: relative;
+                                        right: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info.info2 {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_title {
+                                        width: inherit;
+                                        font-size: 2.4rem;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_desc {
+                                        width: inherit;
+                                        font-size: 1.6rem;
+                                        line-height: 1.5;
+                                    }
+
+                                    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_desc br {
+                                        display: none;
+                                    }
+
+                                    .sticky_con_area.text2 .sticky_con_inner .sticky_con p span {
+                                        display: inline;
+                                    }
+
+                                    .sticky_con_area.expanding1 .sticky_con_inner .sticky_con {
+                                        top: 11rem;
+                                        left: 0;
+                                    }
+
+                                    .sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+                                        transform: none;
+                                    }
+
+                                    .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con,
+                                    .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con,
+                                    .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+                                        right: 0;
+                                        bottom: 0;
+                                    }
+
+                                    .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                    .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                    .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                        padding-right: 0;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner {
+                                        padding-top: calc(var(--app-height, 100vh) * 0.15);
+                                        margin-top: calc(var(--app-height, 100vh) * -0.06);
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+                                        top: 0;
+                                        left: 0;
+                                        bottom: unset;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con .perform_box {
+                                        margin-top: 3rem;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con .perform_box p.desc {
+                                        padding-right: 0;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar {
+                                        width: 8.8rem;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p {
+                                        font-size: 1rem;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p span {
+                                        font-size: 1rem;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.strong {
+                                        margin-top: calc(var(--app-height, 100vh) * 0.29);
+                                        margin-left: -20vw;
+                                    }
+
+                                    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.weak {
+                                        margin-top: calc(var(--app-height, 100vh) * 0.08);
+                                        margin-left: -10vw;
+                                    }
+
+                                    #tireEnding img {
+                                        position: relative;
+                                        left: 50%;
+                                        max-width: unset;
+                                        height: 100vw;
+                                        transform: translateX(-50%);
+                                        -webkit-transform: translateX(-50%);
+                                    }
+
+                                    #tireEnding img.pc {
+                                        display: none;
+                                    }
+
+                                    #tireEnding img.mobile {
+                                        display: block;
+                                    }
+
+                                    .nav-anchor#breaking {
+                                        padding-top: 50px;
+                                        margin-top: calc(var(--app-height, 100vh) * 0.4);
+                                    }
+
+                                    .nav-anchor#handling {
+                                        padding-top: 50px;
+                                        margin-top: calc(var(--app-height, 100vh) * 0.3);
+                                    }
+
+                                    .nav-anchor#stability {
+                                        padding-top: 50px;
+                                        margin-top: calc(var(--app-height, 100vh) * 1.2);
+                                    }
+                                }
+
+                                html[lang=ko] .sticky_con .ico-t {
+                                    vertical-align: middle;
+                                    transform: translateY(-1px);
+                                    margin-right: 0.4rem;
+                                }
+
+                                html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                html[dir=rtl] .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+                                html[dir=rtl] .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                    padding-left: 8rem;
+                                    padding-right: unset;
+                                }
+
+                                html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                    padding-left: 11rem;
+                                    padding-right: unset;
+                                }
+
+                                html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+                                    right: 10.4167vw;
+                                    left: unset;
+                                }
+
+                                html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+                                    left: unset;
+                                }
+
+                                @media all and (max-width: 767px) {
+                                    html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+                                        right: unset;
+                                    }
+                                }
+
+                                html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+                                    padding-right: unset;
+                                    padding-left: 11rem;
+                                }
+
+                                .lds-wrapper {
+                                    position: fixed;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100vw;
+                                    height: 100vh;
+                                    transition: opacity 500ms ease, left 2500ms ease;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    z-index: 9999;
+                                    opacity: 0;
+                                    pointer-events: none;
+                                    touch-action: none;
+                                }
+
+                                .lds-bg {
+                                    position: absolute;
+                                    width: 100vw;
+                                    height: 100vh;
+                                    background-color: #000000;
+                                    opacity: 0.5;
+                                }
+
+                                .lds-ring {
+                                    width: 64px;
+                                    height: 64px;
+                                    opacity: 1;
+                                    position: relative;
+                                }
+
+                                @media all and (max-width: 767px) {
+                                    .lds-ring {
+                                        width: 48px;
+                                        height: 48px;
+                                    }
+                                }
+
+                                .lds-ring-parts {
+                                    box-sizing: border-box;
+                                    display: block;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    border: 4px solid;
+                                    border-radius: 50%;
+                                    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                                    border-color: #fd6720 transparent transparent transparent;
+                                    opacity: 1;
+                                }
+
+                                @media all and (max-width: 767px) {
+                                    .lds-ring-parts {
+                                        border: 3px solid;
+                                        border-radius: 50%;
+                                        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                                        border-color: #fd6720 transparent transparent transparent;
+                                        opacity: 1;
+                                    }
+                                }
+
+                                .lds-ring-parts:nth-child(1) {
+                                    border-color: rgba(255, 255, 255, 0.9);
+                                }
+
+                                .lds-ring-parts:nth-child(3) {
+                                    animation-delay: 0.35s;
+                                }
+
+                                .lds-ring-parts:nth-child(4) {
+                                    animation-delay: 0.25s;
+                                }
+
+                                .lds-ring-parts:nth-child(5) {
+                                    animation-delay: 0.15s;
+                                }
+
+                                @keyframes lds-ring {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .lds-loading-parts {
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    color: white;
+                                }
+                            </style>
+
+
+                            <section class="ltdk129">
+                                <!--.tire_wrapper-->
+                                <div id="ventus" class="tire_wrapper" data-gnb-fix>
+                                    <div class="dim">DARK</div>
+
+                                    <!--.tire_section_keyword-->
+                                    <section id="tireKeyword1" class="tire_section tire_section_keyword"
+                                        data-nav="Keyword1">
+                                        <div class="tire_section_inner tire_content_inner">
+                                            <div class="video_canvas">
+                                                <div class="video_canvas-inner">
+                                                    <div class="canvas web" data-folder="assets/ventus129/seq/w"
+                                                        data-filename="ventus-" data-from="1" data-to="312"
+                                                        id="keywordVideo1">
+                                                        <canvas width="1465" height="824" data-width="1465"
+                                                            data-height="824"></canvas>
+                                                    </div>
+                                                    <div class="canvas mobile" data-folder="assets/ventus129/seq/m"
+                                                        data-filename="ventus-" data-from="1" data-to="312"
+                                                        id="keywordVideoM1">
+                                                        <canvas width="720" height="1533" data-width="720"
+                                                            data-height="1533"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tire_keyword_con_area">
+                                            <div class="sticky_con_area intro">
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="sticky_con tire_intro_text">
+                                                        <h2>Ventus</h2>
+                                                        <div class="text">
+                                                            <span>TURISMO</span><span>MOJADO </span><span>SECO
+                                                            </span><span>DIRECCIÓN</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sticky_con_area text1" id="nav-point">
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="sticky_con sticky_text_desc">
+                                                        <div class="center_text">Neumático superdeportivo de gama alta
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sticky_con_area text2"><!-- 2 -->
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="sticky_con sticky_text_desc">
+                                                        <p class="center_text">
+                                                            <span>Proporciona el mayor placer de conducción
+                                                            </span>
+                                                            <span>basado en la tecnología de carreras
+                                                                competitivas</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span id="breaking" class="nav-anchor"></span>
+                                            <div class="sticky_con_area text3"><!-- 3 -->
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="sticky_con sticky_text_desc">
+                                                        <p class="center_text">FRENO GANADOR DE CARRERAS</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sticky_con_area perform"><!-- 4 -->
+                                                <div class="sticky_con_inner center_center m_bottom">
+                                                    <div class="sticky_con tire_perform">
+                                                        <div class="perform_box">
+                                                            <p class="title" data-obj>Nuevo compuesto <br> de sílice y
+                                                                resina </p>
+                                                            <p class="desc" data-obj>
+                                                                New Silica es un nuevo compuesto desarrollado
+                                                                con la tecnología de desarrollo de neumáticos de
+                                                                carreras.
+                                                                Ayuda a que las partículas de caucho de los neumáticos
+                                                                penetren
+                                                                fácilmente en la superficie de la carretera en
+                                                                condiciones de alta temperatura,
+                                                                lo que maximiza el manejo y el rendimiento de frenado.
+                                                            </p>
+                                                            <video src="assets/videos/ventus-clip01.mp4" autoplay loop
+                                                                muted data-obj playsinline></video>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section id="tireKeyword2" class="tire_section tire_section_keyword"
+                                        data-nav="Keyword2">
+                                        <div class="tire_section_inner tire_content_inner">
+                                            <div class="video_canvas">
+                                                <div class="video_canvas-inner">
+                                                    <div class="canvas web" data-folder="assets/ventus129/seq/w"
+                                                        data-filename="ventus-" data-from="313" data-to="656"
+                                                        id="keywordVideo2">
+                                                        <canvas width="1465" height="824" data-width="1465"
+                                                            data-height="824"></canvas>
+                                                    </div>
+                                                    <div class="canvas mobile" data-folder="assets/ventus129/seq/m"
+                                                        data-filename="ventus-" data-from="313" data-to="656"
+                                                        id="keywordVideoM2">
+                                                        <canvas width="720" height="1533" data-width="720"
+                                                            data-height="1533"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tire_keyword_con_area">
+
+                                            <span id="handling" class="nav-anchor"></span>
+                                            <div class="sticky_con_area handling_intro"><!-- 5 -->
+                                                <div class="skipScroll skip1">
+                                                    <div id="skipStart">START</div>
+                                                    <div id="skipEnd">END</div>
+                                                </div>
+
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="bg"></div>
+                                                    <div class="sticky_con sticky_base">
+                                                        <div class="center_text black">
+                                                            Magnífico manejo
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area handling_spec"><!-- 6 -->
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="sticky_con sticky_spec">
+                                                        <div class="img img1">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="img img2">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="text_area">
+                                                            <div class="left">
+                                                                <p class="spec_sum spec_sum1">
+                                                                    Pitch doble <br> interior <br> y exterior</p>
+                                                                <p class="spec_sum spec_sum2">
+                                                                    Pitch doble <br> interior <br> y exterior</p>
+                                                            </div>
+                                                            <div class="right">
+                                                                <div class="info info1">
+                                                                    <p class="spec_title" data-obj>Conducción en
+                                                                        superficies mojadas</p>
+                                                                    <p class="spec_desc" data-obj>
+                                                                        La ranura lateral ampliada en el hombro mejora
+                                                                        la evacuación del agua y la rigidez del bloque
+                                                                        de la banda de rodadura al tiempo que reduce el
+                                                                        ruido. Optimización de la forma de la ranura
+                                                                        lateral considerando el efecto de poisson bajo
+                                                                        condiciones de carga.
+                                                                    </p>
+                                                                </div>
+                                                                <div class="info info2">
+                                                                    <p class="spec_title" data-obj>Conducción en
+                                                                        superficies secas</p>
+                                                                    <p class="spec_desc" data-obj>
+                                                                        El número de pitches exteriores está optimizado
+                                                                        para asegurar el rendimiento de agarre de la
+                                                                        dirección requerido para curvas secas, esto
+                                                                        también está diseñado para contribuir a la
+                                                                        reducción del ruido de golpeteo.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area expanding1 black"><!-- 7 -->
+                                                <div class="sticky_con_inner center_left m_top">
+                                                    <div class="sticky_con sticky_spec2">
+                                                        <div class="perform_box">
+                                                            <p class="title" data-obj>Ranura lateral expansiva</p>
+                                                            <p class="desc" data-obj>
+                                                                La ranura lateral ampliada en el hombro mejora la
+                                                                evacuación del agua y la rigidez del bloque de la banda
+                                                                de rodadura al tiempo que reduce el ruido. Optimización
+                                                                de la forma de la ranura lateral considerando el efecto
+                                                                de poisson bajo condiciones de carga.
+                                                            </p>
+                                                            <video src="assets/videos/ventus-clip02.mp4" autoplay loop
+                                                                muted data-obj playsinline></video>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area expanding2 black"><!-- 8 -->
+                                                <div class="sticky_con_inner center_center m_bottom">
+                                                    <div class="sticky_con sticky_spec2">
+                                                        <div class="perform_box">
+                                                            <p class="title" data-obj>Bloque de hombro de máximo ancho
+                                                            </p>
+                                                            <p class="desc" data-obj>
+                                                                Bloque de hombro ancho y ranura estrecha y recta en el
+                                                                exterior para mejorar el agarre en seco. Maximiza el
+                                                                agarre en seco con la satisfacción del hidroplaneo
+                                                                requerido. Optimización del ancho y la ubicación de las
+                                                                ranuras para el equilibrio del rendimiento en
+                                                                seco/húmedo.
+                                                            </p>
+                                                            <video src="assets/videos/ventus-clip03.mp4" autoplay loop
+                                                                muted data-obj playsinline></video>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section id="tireKeyword3" class="tire_section tire_section_keyword"
+                                        data-nav="Keyword3">
+                                        <div class="tire_section_inner tire_content_inner">
+                                            <div class="video_canvas">
+                                                <div class="video_canvas-inner">
+                                                    <div class="canvas web" data-folder="assets/ventus129/seq/w"
+                                                        data-filename="ventus-" data-from="657" data-to="998"
+                                                        id="keywordVideo3">
+                                                        <canvas width="1465" height="824" data-width="1465"
+                                                            data-height="824"></canvas>
+                                                    </div>
+                                                    <div class="canvas mobile" data-folder="assets/ventus129/seq/m"
+                                                        data-filename="ventus-" data-from="657" data-to="998"
+                                                        id="keywordVideoM3">
+                                                        <canvas width="720" height="1533" data-width="720"
+                                                            data-height="1533"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tire_keyword_con_area">
+
+                                            <span id="stability" class="nav-anchor"></span>
+                                            <div class="sticky_con_area speed_intro"><!-- 9 -->
+                                                <div class="sticky_con_inner center_center">
+                                                    <div class="bg"></div>
+                                                    <div class="sticky_con sticky_base">
+                                                        <div class="center_text">Estabilidad a altas velocidades</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area speed_text1"><!-- 10 -->
+                                                <div class="sticky_con_inner bottom_right">
+                                                    <div class="sticky_con speed_text">
+                                                        <div class="perform_box">
+                                                            <p class="title" data-obj>La más alta calidad de conducción
+                                                                con un cinturón de refuerzo <br> de aramida</p>
+                                                            <p class="desc" data-obj>
+                                                                El cinturón de refuerzo de aramida se aplica con el
+                                                                mejor material disponible para neumáticos en la
+                                                                actualidad,
+                                                                para permitir un manejo exquisito al mantener la forma
+                                                                optimizada de la superficie de contacto.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area speed_text2"><!-- 11 -->
+                                                <div class="sticky_con_inner bottom_right">
+                                                    <div class="sticky_con speed_text">
+                                                        <div class="perform_box">
+                                                            <p class="desc">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area speed_text3"><!-- 12 -->
+                                                <div class="sticky_con_inner bottom_right">
+                                                    <div class="sticky_con speed_text">
+                                                        <div class="perform_box">
+                                                            <p class="desc">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sticky_con_area speed_text4"><!-- 13 -->
+                                                <div class="sticky_con_inner bottom_left m_top">
+                                                    <div class="sticky_con speed_text">
+                                                        <div class="perform_box">
+                                                            <p class="title" data-obj>Cordón híbrido de aramida</p>
+                                                            <p class="desc" data-obj>
+                                                                Evita el aumento del diámetro del neumático debido a la
+                                                                fuerza centrífuga durante la conducción y minimiza la
+                                                                deformación de la banda de rodadura debido a la fuerza
+                                                                lateral de los cambios de dirección. Proporciona un
+                                                                manejo neutral y un rendimiento notorio en diversas
+                                                                condiciones de manejo. Mejora la estabilidad de manejo y
+                                                                el alto rendimiento de conducción, y contribuye a
+                                                                minimizar el desgaste anormal y unilateral, así como a
+                                                                mejorar la capacidad de carga pesada.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="handling_level_box">
+                                                        <div class="strong">
+                                                            <div class="bar"></div>
+                                                            <p>Handling <span>(strong)</span></p>
+                                                        </div>
+                                                        <div class="weak">
+                                                            <div class="bar"></div>
+                                                            <p>Handling <span>(weak)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+
+
+                            <script>
+
+        /******/ (() => { // webpackBootstrap
+        /******/ 	"use strict";
+                                    var __webpack_exports__ = {};
+                                    // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+                                    (() => {
+
+                                        ;// CONCATENATED MODULE: external "window"
+                                        const external_window_namespaceObject = window;
+                                        ;// CONCATENATED MODULE: ./src/components/local/local-tire-detail-k129/clientlibs/js/main.js
+
+
+                                        function main() {
+                                            external_window_namespaceObject.gsap.registerPlugin(external_window_namespaceObject.ScrollTrigger);
+
+                                            /*scrolltrigger X locomotive */
+                                            external_window_namespaceObject.ScrollTrigger.scrollerProxy("[data-scroll-container]", {
+                                                scrollTop(value) {
+                                                    return arguments.length ? window.locomotive.scrollTo(value, 0, 0) : window.locomotive.scroll.instance.scroll.y;
+                                                },
+                                                getBoundingClientRect() {
+                                                    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+                                                },
+                                                pinType: document.querySelector("[data-scroll-container]").style.transform ? "transform" : "fixed"
+                                            });
+
+                                            external_window_namespaceObject.ScrollTrigger.addEventListener("refresh", () => window.locomotive.update());
+                                            external_window_namespaceObject.ScrollTrigger.refresh();
+
+                                            Tire.init();
+                                        }
+
+                                        const Tire = (function () {
+                                            const BREAK_POINT_TABLET = 1025;
+                                            const debug = document.createElement('span');
+                                            const scrollWrapper = document.querySelector('[data-scroll-container]');
+
+                                            let $locomotive;
+                                            let $scrollWrapper;
+                                            let canvasWidth, canvasHeight;
+                                            let scrollTop = 0;
+                                            let windowWidth = window.innerWidth;
+                                            let windowHeight = window.innerHeight;
+                                            let keywordIndex = 1;
+                                            let skipStart = 0, skipEnd = 0;
+                                            let scrollDirection = 'down';
+                                            let isAnimating = false;
+                                            let isM = windowWidth < BREAK_POINT_TABLET;
+
+                                            // [NOTE] holding sequence
+                                            let seqInfo = {
+                                                // #keywordVideo1
+                                                "1": {
+                                                    "frame": {
+                                                        "71": 40,
+                                                        "108": 40,
+                                                        "312": 60
+                                                    },
+                                                    "png": []
+                                                },
+                                                // #keywordVideo2
+                                                "2": {
+                                                    "frame": {
+                                                        "313": 110,
+                                                        "344": 70,
+                                                        "365": 70,
+                                                        "656": 60 // TODO scss
+                                                    },
+                                                    "png": [ // TODO isPng 분기
+                                                        {
+                                                            "start": 313,
+                                                            "end": 379
+                                                        }
+                                                    ]
+                                                },
+                                                // #keywordVideo3
+                                                "3": {
+                                                    "frame": {
+                                                        "657": 100,
+                                                        "998": 10
+                                                    },
+                                                    "png": []
+                                                }
+                                            }
+
+                                            let seqInfoM = {
+                                                // #keywordVideo1
+                                                "1": {
+                                                    "frame": {
+                                                        "71": 40,
+                                                        "108": 40,
+                                                        // "296": 120
+                                                        "312": 80
+                                                    },
+                                                    "png": []
+                                                },
+                                                // #keywordVideo2
+                                                "2": {
+                                                    "frame": {
+                                                        // "297" : 110,
+                                                        "313": 110,
+                                                        "344": 70,
+                                                        "365": 70
+                                                    },
+                                                    "png": [ // TODO isPng 분기
+                                                        {
+                                                            "start": 313,
+                                                            "end": 378
+                                                        }
+                                                    ]
+                                                },
+                                                // #keywordVideo3
+                                                "3": {
+                                                    "frame": {
+                                                        // "642" : 100,
+                                                        "657": 100,
+                                                        // "982" : 10
+                                                        "998": 10
+                                                    },
+                                                    "png": []
+                                                }
+                                            }
+
+                                            function init() {
+                                                initScroll();
+                                                initMotion();
+                                                resizeHandler();
+                                                $locomotive.start();
+
+                                                var event = document.createEvent('HTMLEvents');
+                                                event.initEvent('resize', true, false);
+                                                window.dispatchEvent(event);
+
+                                                window.addEventListener('resize', () => {
+                                                    if (document.querySelector('[data-author]')) {
+                                                        const authorFlag = parseInt(document.querySelector('[data-author]').getAttribute('data-author'));
+                                                        // [NOTE] AEM 어써링 시 리사이즈 버그가 있어 html 속성 author를 이용한 예외처리 코드
+                                                        if (!authorFlag) {
+                                                            requestAnimationFrame(resizeHandler);
+                                                        }
+                                                    } else {
+                                                        requestAnimationFrame(resizeHandler);
+                                                    }
+                                                }, false);
+
+                                                window.addEventListener('animatingScroll', function (e) {
+                                                    isAnimating = true;
+
+                                                    setTimeout(function () {
+                                                        isAnimating = false;
+                                                    }, e.detail.duration);
+                                                })
+                                            }
+
+                                            const canvasWrap = document.querySelector('.video_canvas')
+                                            const canvasM = document.querySelectorAll('.canvas.mobile canvas')
+
+                                            // [NOTE] resize event
+                                            function resizeHandler() {
+                                                windowWidth = window.innerWidth;
+                                                windowHeight = window.innerHeight;
+                                                isM = windowWidth < BREAK_POINT_TABLET;
+
+                                                setCanvasSize()
+                                            }
+
+                                            // [NOTE] set mobile canvas size
+                                            function setCanvasSize() {
+                                                if (isM) {
+                                                    const sequenceWidth = canvasWrap.clientWidth
+                                                    const sequenceHeight = canvasWrap.clientHeight
+                                                    const playerWidth = canvasM[0].getAttribute('width')
+                                                    const playerHeight = canvasM[0].getAttribute('height')
+                                                    const scaleX = sequenceWidth / playerWidth
+                                                    const scaleY = sequenceHeight / playerHeight
+                                                    const scale = Math.max(scaleX, scaleY)
+                                                    canvasM.forEach(canvas => {
+                                                        external_window_namespaceObject.gsap.set(canvas, { 'width': playerWidth * scale, 'height': playerHeight * scale })
+                                                    })
+                                                }
+                                            }
+
+                                            // [NOTE] init locomotive scroll
+                                            function initScroll() {
+                                                const skipRect1 = document.querySelector('#tireKeyword2 .sticky_con_area').getBoundingClientRect();
+                                                const skipRect2 = document.querySelector('#tireKeyword2 .skipScroll.skip1').getBoundingClientRect();
+
+                                                skipStart = skipRect1.height + skipRect2.top;
+                                                skipEnd = skipRect1.height + skipRect2.bottom;
+
+                                                $scrollWrapper = '[data-scroll-container]';
+                                                $locomotive = window.locomotive;
+                                                scrollDirection = $locomotive.scroll.instance.direction;
+
+                                                external_window_namespaceObject.ScrollTrigger.config({ limitCallbacks: true });
+
+                                                $locomotive.scrollTo(0, 0, { duration: 0 });
+                                                $locomotive.on('scroll', scrollHandler);
+
+                                                external_window_namespaceObject.ScrollTrigger.refresh();
+                                            }
+
+                                            // [NOTE] scroll event
+                                            function scrollHandler(e) {
+                                                external_window_namespaceObject.ScrollTrigger.update();
+                                                scrollTop = $locomotive.scroll.instance.scroll.y;
+                                                scrollDirection = $locomotive.scroll.instance.direction;
+
+                                                if (!isAnimating) scrollSkipFrame();
+                                            }
+
+                                            function scrollSkipFrame() {
+                                                if (scrollWrapper.classList.contains('skip-animation-on')) return;
+
+                                                const isDown = scrollDirection === 'down';
+                                                const skipTo = isDown ? skipStart : skipEnd;
+
+                                                if (scrollTop > skipTo - 100 && scrollTop < skipTo + 100) {
+                                                    scrollWrapper.classList.add('skip-animation-on');
+                                                    $locomotive.scrollTo(document.getElementById(isDown ? 'skipEnd' : 'skipStart'), {
+                                                        callback: () => { scrollWrapper.classList.remove('skip-animation-on') }
+                                                    });
+                                                }
+                                            }
+
+                                            // [NOTE] init animations
+                                            function initMotion() {
+                                                initIntro();
+                                                initMotionText();
+                                                initMotionKeyword();
+                                            }
+
+                                            // [NOTE] intro animations
+                                            function initIntro() {
+                                                // gsap.fromTo('.tire_intro_text', {autoAlpha: 0, y: '15vh'}, {autoAlpha: 1, y: '0vh', duration: 1.5, ease: Quint.easeOut}, 0)
+                                                external_window_namespaceObject.gsap.to('.tire_intro_text', { autoAlpha: 0 }, 0)
+                                                external_window_namespaceObject.gsap.fromTo('.tire_wrapper .dim', { autoAlpha: 1 }, { autoAlpha: 0 }, .9)
+                                                external_window_namespaceObject.gsap.fromTo('#tireKeyword1 .video_canvas', { scale: 1.05 }, { scale: 1, duration: .8 }, 1)
+                                                external_window_namespaceObject.gsap.fromTo('.tire_intro_text', { autoAlpha: 0, y: '10vh' }, { autoAlpha: 1, y: '0vh', duration: .8, ease: 'Quint.easeOut' }, 1)
+                                                external_window_namespaceObject.gsap.to('#header', { top: 0, duration: .5 }, 1)
+                                            }
+
+                                            // [NOTE] sticky text animation
+                                            function initMotionText() {
+                                                $('.sticky_con_area').each(function (i, section) {
+                                                    const testTl = external_window_namespaceObject.gsap.timeline({
+                                                        scrollTrigger: {
+                                                            scroller: $scrollWrapper,
+                                                            trigger: section,
+                                                            start: 'top top',
+                                                            end: 'bottom top',
+                                                            scrub: true,
+                                                            pin: section,
+                                                            pinSpacing: false,
+                                                            // markers: true,
+                                                        }
+                                                    })
+
+                                                    switch (i) {
+                                                        case 0:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0, y: '5vh' }, { autoAlpha: 1, y: '0vh', duration: 0.1 })
+                                                            // testTl.fromTo($('#header'), { y: '0' }, { y: '-120px', duration: 0.2 }, 0.8)
+                                                            testTl.fromTo($('#header'), { top: '0' }, { top: '-120px', duration: 0.2 }, 1)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, y: '-5vh', duration: 0.2 }, 1)
+                                                            break;
+                                                        case 1:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0, y: '5vh' }, { autoAlpha: 1, y: '0vh' }, 0.3)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.5 }, 1)
+                                                            break;
+                                                        case 2:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 }, 0)
+                                                            testTl.fromTo($('.sticky_con span:nth-child(1)', section), { autoAlpha: 0, y: '5vh' }, { autoAlpha: 1, y: '0vh' }, 0.1)
+                                                            testTl.fromTo($('.sticky_con span:nth-child(2)', section), { autoAlpha: 0, y: '5vh' }, { autoAlpha: 1, y: '0vh' }, 0.2)
+                                                            testTl.fromTo($('.sticky_con p', section), { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5 }, 1)
+                                                            break;
+                                                        case 3:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0 }, { autoAlpha: 1 }, 0.3)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.2 }, 1)
+                                                            break;
+                                                        case 4:
+                                                            if (isM) {
+                                                                testTl.to($('.sticky_con', section), { duration: .15 })
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.1)
+                                                                testTl.fromTo($('.perform_box', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0)
+                                                                testTl.fromTo($('video', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0.4)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, 1)
+                                                            } else {
+                                                                testTl.to($('.sticky_con', section), { duration: .15 })
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .4 }, 0.1)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            }
+                                                            break;
+                                                        case 5:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.bg', section), { width: '0' }, { width: '100%', duration: 0.2 }, 0)
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 0)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.2 }, 0.3)
+                                                            testTl.to($('#tireKeyword2 .tire_keyword_con_area'), { backgroundColor: '#fff' }, 0.6)
+                                                            break;
+                                                        case 6:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 }, 0)
+                                                            testTl.to($('#tireKeyword2 .tire_keyword_con_area'), { backgroundColor: '#fff' }, 0)
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
+                                                            testTl.to($('.img1', section), { width: 'calc(100% - 40px)', duration: .2 }, 0.1)
+                                                            testTl.fromTo($('.info1 *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.1)
+                                                            testTl.fromTo($('.spec_sum2', section), { autoAlpha: 0 }, { autoAlpha: 1 }, 0.35)
+                                                            testTl.to($('.spec_sum1', section), { autoAlpha: 1 }, 0.45)
+                                                            testTl.fromTo($('.spec_sum1', section), { autoAlpha: 1 }, { autoAlpha: 0 }, 0.45)
+                                                            testTl.fromTo($('.info1', section), { autoAlpha: 1 }, { autoAlpha: 0 }, 0.45)
+                                                            testTl.to($('.img2', section), { width: 'calc(100% - 40px)', duration: .2 }, 0.85)
+                                                            testTl.fromTo($('.info2 *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.85)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0 }, 1.5)
+                                                            break;
+                                                        case 7:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            if (isM) {
+                                                                testTl.to($('#tireKeyword2 .tire_keyword_con_area'), { backgroundColor: 'transparent' }, 0)
+                                                                testTl.fromTo($('#tireKeyword2 .tire_keyword_con_area'), { zIndex: 0 }, { zIndex: 1 }, 0)
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.1)
+                                                                testTl.fromTo($('.perform_box', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0)
+                                                                testTl.fromTo($('video', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0.4)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, 1)
+                                                            } else {
+                                                                testTl.to($('#tireKeyword2 .tire_keyword_con_area'), { backgroundColor: 'transparent' }, 0)
+                                                                testTl.fromTo($('#tireKeyword2 .tire_keyword_con_area'), { zIndex: 0 }, { zIndex: 1 }, 0)
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.5, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.1)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            }
+                                                            break;
+                                                        case 8:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            if (isM) {
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 0.1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .1 }, 0.1)
+                                                                testTl.fromTo($('video', section), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0.4)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, 1)
+                                                            } else {
+                                                                testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .4 }, 0.1)
+                                                                testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            }
+                                                            break;
+                                                        case 9:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.bg', section), { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0, y: '5vh' }, { autoAlpha: 1, y: '0vh' }, 0.3)
+                                                            testTl.fromTo($('#tireKeyword3'), { backgroundColor: 'transparent' }, { backgroundColor: '#000' }, 0.7)
+                                                            testTl.fromTo(section, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5 }, 1.2)
+                                                            testTl.to($('#tireKeyword3 .canvas'), { autoAlpha: 1 }, 1.5)
+                                                            break;
+                                                        case 11:
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con', section), { autoAlpha: 0 }, { autoAlpha: 1 })
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            break;
+                                                        case 13:
+                                                            testTl.to($('.sticky_con_inner', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .4 }, 0.1)
+                                                            testTl.to($('.sticky_con_inner', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            break;
+                                                        default: // 10, 12
+                                                            testTl.to($('.sticky_con', section), { duration: .15 })
+                                                            testTl.fromTo($('.sticky_con *[data-obj]', section), { autoAlpha: 0, y: '2rem' }, { autoAlpha: 1, y: 0, duration: 1, ease: external_window_namespaceObject.Quint.easeOut, stagger: .4 }, 0.1)
+                                                            testTl.to($('.sticky_con', section), { autoAlpha: 0, duration: 0.8 }, '+=1.5')
+                                                            break;
+                                                    }
+                                                });
+                                            }
+
+                                            // [NOTE] 시퀀스에 대한 홀딩 데이터(추가되어야 하는 프레임 수)
+                                            function getTotalPlusFrame(target) {
+                                                const mobileText = isM ? 'M' : '';
+                                                const seqInfoSet = mobileText === 'M' ? seqInfoM : seqInfo;
+
+                                                let plusSeqData = seqInfoSet[target.attr('id').replace('keywordVideo' + mobileText, '')].frame;
+                                                let pngSeqData = seqInfoSet[target.attr('id').replace('keywordVideo' + mobileText, '')].png;
+                                                let totalPlusFrame = 0;
+                                                let result = {
+                                                    "plusAmount": 0,
+                                                    "frameData": plusSeqData,
+                                                    "pngFrame": pngSeqData
+                                                }
+
+                                                for (let i = 0; i < Object.keys(plusSeqData).length; i++) {
+                                                    let temp = Object.values(plusSeqData)[i];
+                                                    totalPlusFrame += temp;
+                                                }
+
+                                                result.plusAmount = totalPlusFrame;
+
+                                                return result;
+                                            }
+
+                                            let endFrameToUpdate = 0;
+
+                                            // [NOTE] KEYWORD animation
+                                            function initMotionKeyword() {
+                                                $('.tire_content_inner').each(function (i, section) {
+                                                    keywordIndex = i + 1;
+                                                    const thisVideo = isM ? $(`#keywordVideoM${keywordIndex}`)[0] : $(`#keywordVideo${keywordIndex}`)[0];
+
+                                                    if (!$(section).hasClass('video_play')) {
+                                                        initVideoCanvas(thisVideo);
+                                                        preloadImages(thisVideo);
+                                                    }
+
+                                                    const tlKeyword = external_window_namespaceObject.gsap.timeline({
+                                                        scrollTrigger: {
+                                                            scroller: $scrollWrapper,
+                                                            trigger: this,
+                                                            start: 'top ' + 'top',
+                                                            end: 'bottom bottom',
+                                                            scrub: 1,
+                                                            pin: this,
+                                                            pinSpacing: false,
+                                                            onEnter: function (e) {
+                                                                if (!$(section).hasClass('video_play')) enterKeyword(e, thisVideo);
+                                                                else enterVideo(thisVideo);
+                                                            },
+                                                            onEnterBack: function (e) {
+                                                                if (!$(section).hasClass('video_play')) enterKeyword(e, thisVideo);
+                                                                else enterVideo(thisVideo);
+                                                            },
+                                                            // markers: true,
+                                                        }
+                                                    })
+                                                    if (!$(section).hasClass('video_play')) {
+                                                        let totalPlusFrame = isM ? getTotalPlusFrame($(section).find('.canvas.mobile')).plusAmount : getTotalPlusFrame($(section).find('.canvas.web')).plusAmount;
+                                                        let realEndFrame = thisVideo._frame.to;
+
+                                                        realEndFrame *= 1;
+                                                        realEndFrame += totalPlusFrame;
+
+                                                        endFrameToUpdate = realEndFrame - thisVideo._frame.from;
+
+                                                        tlKeyword.fromTo(thisVideo, { frame: 0 }, {
+                                                            frame: realEndFrame - thisVideo._frame.from,
+                                                            onUpdate: function () {
+                                                                updateVideoFrame(thisVideo);
+                                                            }
+                                                        })
+                                                    }
+                                                });
+
+                                                // [NOTE] loadingSpinner init
+                                                const lp = new LoadingSpinner();
+                                                lp.show();
+                                                const sliceer = Math.floor(loadImagePromises.length * 0.3);
+                                                loadSimultaneously = loadImagePromises.slice(0, sliceer);
+                                                loadSequentially = loadImagePromises.slice(sliceer);
+
+                                                Promise.all(loadSimultaneously.map(loadImage => loadImage())).then((v) => {
+                                                    lp.hide();
+                                                    const gen = loadImageSyncGenerator(loadSequentially);
+                                                    loadSequentially.map(() => gen.next());
+                                                })
+                                            }
+
+                                            // [DOES] 1. 프로미스를 동기적으로 실행할 제너레이터 함수
+                                            const loadImagePromises = [];
+                                            let loadSequentially = [];
+                                            let loadSimultaneously = [];
+
+                                            // 일괄
+                                            function* loadImageSyncGenerator(loadImages) {
+                                                for (const loadImage of loadImages) {
+                                                    yield loadImage();
+                                                }
+                                            }
+
+                                            // [NOTE] video sequence - canvas / initVideoCanvas() ~ preloadImages()
+                                            function initVideoCanvas(videoCanvas) {
+                                                const thisVideoCanvas = $('canvas', videoCanvas)[0];
+                                                canvasWidth = thisVideoCanvas.width;
+                                                canvasHeight = thisVideoCanvas.height;
+                                                thisVideoCanvas.width = canvasWidth;
+                                                thisVideoCanvas.height = canvasHeight;
+
+                                                videoCanvas._frame = {
+                                                    canvasCtx: thisVideoCanvas.getContext('2d'),
+                                                    from: videoCanvas.getAttribute('data-from'),
+                                                    to: videoCanvas.getAttribute('data-to'),
+                                                    filename: videoCanvas.getAttribute('data-filename'),
+                                                    folder: videoCanvas.getAttribute('data-folder'),
+                                                };
+
+                                                videoCanvas._frame.strLen = videoCanvas._frame.from.toString().length;
+                                                videoCanvas._frame.thisVideoImg = new Image();
+                                                videoCanvas._frame.thisVideoImg.width = canvasWidth;
+                                                videoCanvas._frame.thisVideoImg.height = canvasHeight;
+                                                videoCanvas._frame.thisVideoImg.onload = function () {
+                                                    videoCanvas._frame.canvasCtx.drawImage(videoCanvas._frame.thisVideoImg, 0, 0);
+                                                };
+
+                                                // TODO 세 번째 파라미터 isPng 분기 작업 필요
+                                                let tempCondition = videoCanvas._frame.from;
+                                                tempCondition *= 1;
+                                                videoCanvas._frame.thisVideoImg.src = getVideoFrameSrc(videoCanvas, videoCanvas._frame.from, tempCondition === 313);
+
+                                                videoCanvas.frame = 0;
+                                                videoCanvas.currentFrame = 0;
+                                            }
+
+                                            function getVideoFrameSrc(video, currentFrame, isPng) {
+                                                let index = `${currentFrame}`;
+                                                let resultSrc = '';
+
+                                                index = index.toString().padStart(5, '0');
+
+                                                resultSrc = `${video._frame.folder}/${video._frame.filename + index}`;
+                                                resultSrc += !!isPng ? '.png' : '.jpg';
+
+                                                return resultSrc;
+                                            }
+
+                                            function enterKeyword(e, thisVideo) {
+                                                if (e.direction == 1) {
+                                                    updateVideoFrameFrom(thisVideo);
+                                                } else {
+                                                    updateVideoFrameTo(thisVideo);
+                                                }
+                                            }
+
+                                            function updateVideoFrame(video) {
+                                                const currentFrame = Math.round(video.frame);
+                                                if (video.currentFrame != currentFrame) {
+                                                    drawVideoFrame(video, currentFrame);
+                                                }
+                                            }
+
+                                            function updateVideoFrameFrom(video) {
+                                                drawVideoFrame(video, 0);
+                                            }
+
+                                            function updateVideoFrameTo(video) {
+                                                drawVideoFrame(video, endFrameToUpdate);
+                                            }
+
+                                            function drawVideoFrame(video, currentFrame) {
+                                                video.currentFrame = currentFrame;
+
+                                                if (video._frame.images && video._frame.images[currentFrame]) {
+                                                    video._frame.canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+                                                    video._frame.canvasCtx.drawImage(video._frame.images[currentFrame], 0, 0);
+                                                }
+                                            }
+
+                                            const $tireWrapper = document.querySelector('.tire_wrapper')
+                                            let totalSeqImage = 0
+                                            let loadedSeqImage = 0
+                                            let isLoaded = false
+
+                                            function preloadImages(video) {
+                                                let fromNum = video._frame.from;
+                                                let toNum = video._frame.to;
+                                                const originToNum = toNum;
+                                                const seqData = getTotalPlusFrame($(video));
+                                                const pngSeqData = seqData.pngFrame;
+                                                const plusSeqData = seqData.frameData;
+                                                let holdTimingSeq = [];
+
+                                                video._frame.images = [];
+                                                fromNum *= 1;
+                                                toNum *= 1;
+
+                                                for (let i = 0; i < Object.keys(plusSeqData).length; i++) {
+                                                    let temp = Object.keys(plusSeqData)[i];
+                                                    temp *= 1;
+                                                    holdTimingSeq.push(temp);
+                                                }
+
+                                                for (let i = fromNum; i <= toNum; ++i) {
+
+                                                    // [DOES] 2. 프로미스에 이미지 로드 로직 담기
+                                                    const loadImagePromise = function () {
+                                                        return new Promise((resolve, reject) => {
+                                                            let thisVideoImg = new Image();
+
+                                                            // TODO 조건문 임시. pngSeqData
+                                                            if (isM) thisVideoImg.src = getVideoFrameSrc(video, i, i > 312 && i < 379);
+                                                            else thisVideoImg.src = getVideoFrameSrc(video, i, i > 312 && i < 380);
+
+                                                            const mappingData = holdTimingSeq.find(x => x === i);
+
+                                                            if (mappingData) {
+                                                                for (let j = 0; j < plusSeqData[i]; j++) {
+                                                                    video._frame.images.push(thisVideoImg);
+                                                                }
+                                                            } else {
+                                                                video._frame.images.push(thisVideoImg);
+                                                            }
+
+                                                            if (toNum !== totalSeqImage) totalSeqImage = toNum
+
+                                                            thisVideoImg.onload = function () {
+                                                                resolve();
+                                                                loadedSeqImage += 1
+
+                                                                const loadedSimu = loadedSeqImage / loadSimultaneously.length;
+                                                                const ldsPercent = document.querySelector('.lds-loading-parts')
+                                                                if (loadedSimu <= 1) {
+                                                                    const loadedSimuPercent = Math.floor(loadedSimu * 100) + '%'
+                                                                    ldsPercent.textContent = loadedSimuPercent
+                                                                }
+
+
+                                                                if (isLoaded) return
+                                                                if (isM) isLoaded = totalSeqImage * 0.7 < loadedSeqImage
+                                                                else isLoaded = totalSeqImage === loadedSeqImage
+
+                                                                if (!$tireWrapper.classList.contains('loaded') && isLoaded) $tireWrapper.classList.add('loaded')
+                                                            }
+
+                                                            thisVideoImg.onerror = function () {
+                                                                reject();
+                                                            }
+
+                                                        })
+                                                    }
+
+                                                    loadImagePromises.push(loadImagePromise);
+                                                }
+                                            }
+
+                                            function enterVideo(video) {
+                                                video.currentTime = 0;
+                                                const promise = video.play();
+                                                console.log(promise);
+                                                if (promise !== undefined) {
+                                                    promise.then(_ => {
+                                                        console.log('play')
+                                                    }).catch(error => {
+                                                        console.log('err')
+                                                    });
+                                                }
+                                            }
+
+                                            return {
+                                                init: init
+                                            }
+                                        })();
+
+                                        class LoadingSpinner {
+                                            constructor() {
+                                                this.element = null;
+                                                this._init();
+                                            }
+                                            _init() {
+                                                this.appendApp();
+                                            }
+                                            template() {
+                                                return `
+                    <div class="lds-wrapper">
+                        <div class="lds-bg"></div>
+                        <div class="lds-ring">
+                            <div class="lds-ring-parts"></div>
+                            <div class="lds-ring-parts"></div>
+                            <div class="lds-ring-parts"></div>
+                            <div class="lds-ring-parts"></div>
+                            <div class="lds-ring-parts"></div>
+                            <div class="lds-loading-parts">0%</div>
+                        </div>
+                    </div>
+                `
+                                            }
+                                            appendApp() {
+                                                const fragment = document.createElement('div');
+                                                fragment.innerHTML = this.template();
+                                                const target = fragment.children[0];
+                                                document.body.appendChild(target);
+                                                this.element = target;
+                                            }
+                                            show() {
+                                                this.element.style.opacity = 1;
+                                                this.element.style.pointerEvents = 'all';
+                                            }
+                                            hide() {
+                                                this.element.style.opacity = 0;
+                                                this.element.style.pointerEvents = 'none';
+                                            }
+                                        }
+
+                                        window.addEventListener('compFuncRun', main);
+                                    })();
+
+                                    // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+                                    (() => {
+                                        // extracted by mini-css-extract-plugin
+
+                                    })();
+
+                                    /******/
+                                })()
+                                    ;
+
+                            </script>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div>
+            <link rel="stylesheet" href="styles/clientlibs.min.css">
+        </div>
+        <!-- Este script es necesario -->
+        <script src="js/clientlib-local.min.js"></script>
+    </div>
+</body>
+
+</html>

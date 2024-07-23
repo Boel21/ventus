@@ -1,0 +1,1298 @@
+
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+body br.m {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#main {
+    position: relative;
+    padding-top: 0;
+}
+
+.scroll_wrapper {
+    min-width: 1280px;
+    min-height: var(--app-height, 100vh);
+    overflow-y: hidden !important;
+}
+
+.tire_wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.tire_wrapper .dim {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: #000;
+}
+
+.tire_wrapper video {
+    object-fit: fill;
+}
+
+.tire_wrapper .tire_section {
+    position: relative;
+    background: #111;
+    color: #fff;
+}
+
+.tire_wrapper .tire_section .tire_section_inner {
+    position: relative;
+}
+
+.tire_wrapper .tire_section_keyword {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: calc(var(--app-height, 100vh) * 30.4);
+}
+
+.tire_wrapper .tire_section_keyword .tire_content_inner,
+.tire_wrapper .tire_section_keyword .video_canvas-inner {
+    height: 100%;
+}
+
+.tire_wrapper .tire_section_keyword .tire_keyword_con_area {
+    margin-top: calc(var(--app-height, 100vh) * -32.4);
+    pointer-events: none;
+}
+
+.tire_wrapper .tire_section_keyword .tire_keyword_con_area .intro .btn {
+    pointer-events: auto;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword1 {
+    height: calc(var(--app-height, 100vh) * 15.9);
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword1 .tire_keyword_con_area {
+    margin-top: calc(var(--app-height, 100vh) * -18);
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword2 {
+    height: calc(var(--app-height, 100vh) * 23.06);
+    margin-top: calc(var(--app-height, 100vh) * -5.5);
+    background-color: transparent;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword2 .tire_content_inner {
+    z-index: 1;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword2 .tire_keyword_con_area {
+    position: relative;
+    margin-top: calc(var(--app-height, 100vh) * -22.56);
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword3 {
+    height: calc(var(--app-height, 100vh) * 15.96);
+    margin-top: calc(var(--app-height, 100vh) * -10.8);
+    z-index: 1;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner {
+    z-index: 1;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner .video_canvas .video_canvas-inner .canvas {
+    overflow: hidden;
+    opacity: 0;
+    margin: 0 auto;
+}
+
+.tire_wrapper .tire_section_keyword#tireKeyword3 .tire_keyword_con_area {
+    position: relative;
+    z-index: 1;
+    margin-top: calc(var(--app-height, 100vh) * -16.96);
+}
+
+.video_canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.video_canvas .canvas,
+.video_canvas .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.video_canvas .canvas canvas,
+.video_canvas .canvas video,
+.video_canvas .video canvas,
+.video_canvas .video video {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--app-height, 100vh) * 0.5);
+    bottom: auto;
+    min-width: calc(var(--app-height, 100vh) * 1.7782);
+    width: 100vw;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s;
+}
+
+.video_canvas .video_canvas-inner .canvas {
+    background: no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.video_canvas .video_canvas-inner .canvas.web {
+    width: 100vw;
+    height: var(--app-height, 100vh);
+}
+
+.video_canvas .video_canvas-inner .canvas.mobile {
+    display: none;
+}
+
+#tireKeyword1 .video_canvas #tireKeyword2 .video_canvas,
+#tireKeyword3 .video_canvas {
+    position: relative;
+}
+
+.sticky_con_area {
+    position: relative;
+    height: calc(var(--app-height, 100vh) * 2.5);
+    margin-top: 0;
+}
+
+.sticky_con_area.intro {
+    height: var(--app-height, 100vh);
+    margin-top: calc(var(--app-height, 100vh) * 1.6);
+}
+
+.sticky_con_area.text1 {
+    height: calc(var(--app-height, 100vh) * 2.7);
+    margin-top: calc(var(--app-height, 100vh) * -0.5);
+}
+
+.sticky_con_area.text2 {
+    height: calc(var(--app-height, 100vh) * 2.7);
+    margin-top: calc(var(--app-height, 100vh) * -0.6);
+}
+
+.sticky_con_area.text2 .sticky_con_inner .sticky_con p span {
+    display: block;
+    text-align: center;
+}
+
+.sticky_con_area.text3 {
+    height: calc(var(--app-height, 100vh) * 4);
+    margin-top: calc(var(--app-height, 100vh) * -0.2);
+}
+
+.sticky_con_area.perform {
+    height: calc(var(--app-height, 100vh) * 3);
+    margin-top: calc(var(--app-height, 100vh) * 0.5);
+}
+
+.sticky_con_area.handling_intro {
+    height: calc(var(--app-height, 100vh) * 3.5);
+    margin-top: calc(var(--app-height, 100vh) * -1);
+}
+
+.sticky_con_area.handling_intro .bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: calc(var(--app-height, 100vh) * 3);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.sticky_con_area.handling_intro .skipScroll {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(var(--app-height, 100vh) * 2.9);
+    margin-bottom: calc(var(--app-height, 100vh) * -1.1);
+    z-index: 1;
+}
+
+.sticky_con_area.handling_intro .skipScroll div {
+    font-size: 0;
+}
+
+.sticky_con_area.handling_intro .skipScroll #skipStart {
+    position: absolute;
+    top: 0;
+}
+
+.sticky_con_area.handling_intro .skipScroll #skipEnd {
+    position: absolute;
+    bottom: 0;
+}
+
+.sticky_con_area.handling_spec {
+    height: calc(var(--app-height, 100vh) * 4.5);
+    margin-top: calc(var(--app-height, 100vh) * -1.6);
+}
+
+.sticky_con_area.expanding1 {
+    height: calc(var(--app-height, 100vh) * 4);
+    margin-top: calc(var(--app-height, 100vh) * 1);
+}
+
+.sticky_con_area.expanding1 .sticky_con_inner .sticky_con {
+    position: relative;
+    left: 10.3125vw;
+}
+
+.sticky_con_area.expanding2 {
+    height: calc(var(--app-height, 100vh) * 2.5);
+    margin-top: calc(var(--app-height, 100vh) * 0.8);
+}
+
+.sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+    -webkit-transform: translateX(calc(50% + 10.625vw));
+    transform: translateX(calc(50% + 10.625vw));
+}
+
+@media all and (max-width: 1366px) {
+    .sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+        -webkit-transform: translateX(calc(50% + 6.625vw));
+        transform: translateX(calc(50% + 6.625vw));
+    }
+}
+
+.sticky_con_area.speed_intro {
+    height: calc(var(--app-height, 100vh) * 3);
+    margin-top: calc(var(--app-height, 100vh) * 3.6);
+}
+
+.sticky_con_area.speed_intro .bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--app-height, 100vh);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    background-color: #000;
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con,
+.sticky_con_area.speed_text2 .sticky_con_inner .sticky_con,
+.sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+    position: relative;
+    right: 10.41667vw;
+    bottom: calc(var(--app-height, 100vh) * 0.154629);
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box,
+.sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box,
+.sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box {
+    color: #fff;
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p,
+.sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p,
+.sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p {
+    max-width: 56rem;
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+.sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+.sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+    padding-right: 8rem;
+}
+
+.sticky_con_area.speed_text1 {
+    height: calc(var(--app-height, 100vh) * 3);
+    margin-top: calc(var(--app-height, 100vh) * -0.8);
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con {
+    position: relative;
+    right: 10.41667vw;
+    bottom: calc(var(--app-height, 100vh) * 0.154629);
+}
+
+.sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+    padding-right: 11rem;
+}
+
+.sticky_con_area.speed_text2 {
+    height: calc(var(--app-height, 100vh) * 3);
+    margin-top: calc(var(--app-height, 100vh) * -0.3);
+}
+
+.sticky_con_area.speed_text3 {
+    height: calc(var(--app-height, 100vh) * 1.2);
+    margin-top: calc(var(--app-height, 100vh) * -0.2);
+}
+
+.sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+    bottom: calc(var(--app-height, 100vh) * 0.135185);
+}
+
+.sticky_con_area.speed_text4 {
+    height: calc(var(--app-height, 100vh) * 3);
+    margin-top: calc(var(--app-height, 100vh) * 0);
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner {
+    position: relative;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+    position: relative;
+    left: 10.4167vw;
+    bottom: calc(var(--app-height, 100vh) * 0.222222);
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div {
+    position: absolute;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.strong {
+    top: 50%;
+    left: 50%;
+    margin-top: calc(var(--app-height, 100vh) * 0.041667);
+    margin-left: -5.4167vw;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.weak {
+    top: 50%;
+    left: 50%;
+    margin-top: calc(var(--app-height, 100vh) * -0.4);
+    margin-left: 7.5208vw;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar {
+    width: 11.4rem;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar:before {
+    display: block;
+    content: "";
+    width: 70%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 0.8rem;
+}
+
+.sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p span {
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 0.8rem;
+}
+
+.sticky_con_area * {
+    color: #fff;
+}
+
+.sticky_con_area.black * {
+    color: #000;
+}
+
+.sticky_con_area.black .sticky_con_inner .sticky_con .perform_box .desc {
+    color: #000;
+}
+
+.sticky_con_area .sticky_con_inner {
+    position: relative;
+    display: flex;
+    height: var(--app-height, 100vh);
+    padding: 0;
+    /* COMMON TEXT SECTION */
+    /* CUSTOM TEXT SECTION */
+}
+
+.sticky_con_area .sticky_con_inner.white {
+    background-color: #fff;
+}
+
+.sticky_con_area .sticky_con_inner.space {
+    justify-content: space-between;
+}
+
+.sticky_con_area .sticky_con_inner.top_left {
+    align-items: start;
+    justify-content: left;
+}
+
+.sticky_con_area .sticky_con_inner.top_right {
+    align-items: start;
+    justify-content: right;
+}
+
+.sticky_con_area .sticky_con_inner.bottom_left {
+    align-items: flex-end;
+}
+
+.sticky_con_area .sticky_con_inner.bottom_right {
+    align-items: flex-end;
+    justify-content: right;
+}
+
+.sticky_con_area .sticky_con_inner.center_left {
+    align-items: center;
+    justify-content: left;
+}
+
+.sticky_con_area .sticky_con_inner.center_right {
+    align-items: center;
+    justify-content: right;
+}
+
+.sticky_con_area .sticky_con_inner.center_center {
+    align-items: center;
+    justify-content: center;
+}
+
+.sticky_con_area .sticky_con_inner.center_center .perform_box,
+.sticky_con_area .sticky_con_inner.center_left .perform_box,
+.sticky_con_area .sticky_con_inner.center_right .perform_box {
+    margin-top: 7.5rem;
+}
+
+.sticky_con_area .sticky_con_inner .center_text {
+    font-size: 6.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -0.015rem;
+    margin-top: 7rem;
+}
+
+.sticky_con_area .sticky_con_inner .center_text.black {
+    color: #000;
+}
+
+.sticky_con_area .sticky_con_inner .perform_box p {
+    max-width: 46rem;
+}
+
+.sticky_con_area .sticky_con_inner .perform_box p.title {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.0015rem;
+}
+
+.sticky_con_area .sticky_con_inner .perform_box p.desc {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.67;
+    letter-spacing: -0.016rem;
+    margin-top: 1.6rem;
+}
+
+@media all and (max-width: 767px) {
+    .sticky_con_area .sticky_con_inner .perform_box p.desc .m_hide {
+        display: none;
+    }
+}
+
+.sticky_con_area .sticky_con_inner .perform_box video {
+    width: 36rem;
+    height: 20rem;
+    margin-top: 3.2rem;
+}
+
+.sticky_con_area .sticky_con_inner .tire_intro_text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-top: -9rem;
+    /* font-family: "Hankook, sans-serif";*/
+}
+
+.sticky_con_area .sticky_con_inner .tire_intro_text h2 {
+    width: 100vw;
+    height: 4.6875vw;
+    font-size: 0;
+    background: url("assets/ventus129/logo-ventus.svg") no-repeat 50% 50%;
+    background-size: contain;
+}
+
+.sticky_con_area .sticky_con_inner .tire_intro_text .text {
+    text-align: center;
+    margin-top: 0.8rem;
+}
+
+.sticky_con_area .sticky_con_inner .tire_intro_text .text span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.144rem;
+    text-transform: uppercase;
+    padding: 4.8rem 3.2rem 4rem;
+}
+
+.sticky_con_area .sticky_con_inner .tire_intro_text .buy_btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 12.6rem;
+    height: 4.8rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 4.8rem;
+    letter-spacing: -0.016rem;
+    border-radius: 2.4rem;
+    background-color: #000;
+}
+
+.sticky_con_area .sticky_con_inner .tire_perform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(var(--app-height, 100vh) * -0.3461);
+    margin-left: 3vw;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec {
+    position: relative;
+    width: 100%;
+    margin-top: calc(var(--app-height, 100vh) * -0.5);
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .img {
+    position: relative;
+    right: 2rem;
+    overflow: hidden;
+    width: 0;
+    height: calc(var(--app-height, 100vh) * 0.5);
+    margin-top: calc(var(--app-height, 100vh) * 0.5);
+    margin-left: auto;
+    background-size: cover;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .img span {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+    background: no-repeat 100% 50%;
+    background-size: cover;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .img.img1 span {
+    background-image: url("assets/ventus129/bg2.jpg");
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .img.img2 {
+    position: absolute;
+    top: calc(var(--app-height, 100vh) * 0.5);
+    margin-top: 0;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .img.img2 span {
+    background-image: url("assets/ventus129/bg1.jpg");
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area {
+    display: flex;
+    height: calc(var(--app-height, 100vh) * 0.5 - 40px);
+    padding-bottom: calc(var(--app-height, 100vh) * 0.083334);
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div {
+    position: relative;
+    flex: 1;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right {
+    text-align: right;
+    padding-right: 6.25vw;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_sum {
+    position: absolute;
+    left: 6.25vw;
+    bottom: 0;
+    opacity: 0;
+    font-size: 7.2rem;
+    font-weight: 600;
+    font-style: oblique;
+    line-height: 1.22;
+    letter-spacing: -0.072rem;
+    color: #e33d00;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_title {
+    display: block;
+    width: 46rem;
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.0015rem;
+    color: #000;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc {
+    width: 46rem;
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.67;
+    letter-spacing: -0.016rem;
+    margin-top: 1.6rem;
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc .m_hide {
+    color: #000;
+}
+
+@media all and (max-width: 767px) {
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div p.spec_desc .m_hide {
+        display: none;
+    }
+}
+
+.sticky_con_area .sticky_con_inner .sticky_spec .text_area>div .info {
+    position: absolute;
+    right: 6.25vw;
+    bottom: 0;
+}
+
+.nav-anchor#breaking {
+    margin-top: calc(var(--app-height, 100vh) * 1.2);
+}
+
+.nav-anchor#handling {
+    margin-top: calc(var(--app-height, 100vh) * 1);
+}
+
+.nav-anchor#stability {
+    margin-top: calc(var(--app-height, 100vh) * 1.4);
+}
+
+#tireEnding img.mobile {
+    display: none;
+}
+
+@media all and (max-width: 1024px) {
+    .tire_wrapper .tire_section_keyword#tireKeyword1 {
+        height: calc(var(--app-height, 100vh) * 8.56);
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword1 .tire_keyword_con_area {
+        margin-top: calc(var(--app-height, 100vh) * -10.56);
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword2 {
+        height: calc(var(--app-height, 100vh) * 8.9481);
+        margin-top: calc(var(--app-height, 100vh) * -2);
+        background-color: transparent;
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_content_inner {
+        z-index: 1;
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword2 .tire_keyword_con_area {
+        position: relative;
+        margin-top: calc(var(--app-height, 100vh) * -8.9481);
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword3 {
+        height: calc(var(--app-height, 100vh) * 8.8965);
+        margin-top: calc(var(--app-height, 100vh) * -2.6);
+        z-index: 1;
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner {
+        z-index: 1;
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_content_inner .video_canvas .video_canvas-inner .canvas {
+        overflow: hidden;
+        opacity: 0;
+        margin: 0 auto;
+    }
+
+    .tire_wrapper .tire_section_keyword#tireKeyword3 .tire_keyword_con_area {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(var(--app-height, 100vh) * -9.8965);
+    }
+
+    .video_canvas {
+        position: absolute;
+        width: 100vw;
+        height: calc(var(--app-height, 100vh) * 1.01);
+    }
+
+    .video_canvas .canvas canvas,
+    .video_canvas .canvas video,
+    .video_canvas .video canvas,
+    .video_canvas .video video {
+        min-width: 100vw;
+        height: var(--app-height, 100vh);
+        object-fit: cover;
+    }
+
+    .video_canvas .video_canvas-inner .canvas.web {
+        display: none;
+    }
+
+    .video_canvas .video_canvas-inner .canvas.mobile {
+        display: block;
+    }
+
+    /* (.sticky_con_area) 시퀀스 길이 */
+    .sticky_con_area {
+        height: var(--app-height, 100vh);
+        margin-top: 0;
+    }
+
+    .sticky_con_area.intro {
+        height: calc(var(--app-height, 100vh) * 0.8);
+        margin-top: calc(var(--app-height, 100vh) * 1.6);
+    }
+
+    .sticky_con_area.text1 {
+        height: calc(var(--app-height, 100vh) * 1.2);
+        margin-top: calc(var(--app-height, 100vh) * -0.3);
+    }
+
+    .sticky_con_area.text2 {
+        height: calc(var(--app-height, 100vh) * 1.2);
+        margin-top: calc(var(--app-height, 100vh) * -0.2);
+    }
+
+    .sticky_con_area.text3 {
+        height: calc(var(--app-height, 100vh) * 1.7);
+        margin-top: 0;
+    }
+
+    .sticky_con_area.perform {
+        height: calc(var(--app-height, 100vh) * 2.9);
+        margin-top: calc(var(--app-height, 100vh) * 0);
+    }
+
+    .sticky_con_area.handling_intro {
+        height: calc(var(--app-height, 100vh) * 1.75);
+        margin-top: calc(var(--app-height, 100vh) * -1);
+    }
+
+    .sticky_con_area.handling_intro .bg {
+        height: calc(var(--app-height, 100vh) * 1.5);
+    }
+
+    .sticky_con_area.handling_intro .skipScroll {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: calc(var(--app-height, 100vh) * 1.9);
+        margin-bottom: calc(var(--app-height, 100vh) * -0.85);
+        z-index: 1;
+    }
+
+    .sticky_con_area.handling_spec {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * -0.8);
+    }
+
+    .sticky_con_area.expanding1 {
+        height: calc(var(--app-height, 100vh) * 2.1);
+        margin-top: calc(var(--app-height, 100vh) * 0.7);
+    }
+
+    .sticky_con_area.expanding2 {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * -0.5);
+    }
+
+    .sticky_con_area.speed_intro {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * 1.3);
+    }
+
+    .sticky_con_area.speed_text1 {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * -0.4);
+    }
+
+    .sticky_con_area.speed_text2 {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * -0.15);
+    }
+
+    .sticky_con_area.speed_text3 {
+        height: calc(var(--app-height, 100vh) * 0);
+        margin-top: calc(var(--app-height, 100vh) * 0);
+    }
+
+    .sticky_con_area.speed_text4 {
+        height: calc(var(--app-height, 100vh) * 2);
+        margin-top: calc(var(--app-height, 100vh) * 0.5);
+    }
+
+    /* (.sticky_con_area) 스타일 */
+    .sticky_con_area .sticky_con_inner.m_top {
+        align-items: flex-start;
+    }
+
+    .sticky_con_area .sticky_con_inner.m_top .perform_box {
+        margin-top: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner.m_top .perform_box video {
+        bottom: unset;
+        top: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner.m_bottom {
+        align-items: flex-end;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_con .perform_box {
+        padding: 0 2rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.title br,
+    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.desc br,
+    .sticky_con_area .sticky_con_inner .sticky_con .center_text br {
+        display: none;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.title br.m,
+    .sticky_con_area .sticky_con_inner .sticky_con .perform_box p.desc br.m,
+    .sticky_con_area .sticky_con_inner .sticky_con .center_text br.m {
+        display: block;
+    }
+
+    .sticky_con_area .sticky_con_inner .tire_intro_text {
+        margin-top: 9.5rem;
+        top: unset;
+    }
+
+    .sticky_con_area .sticky_con_inner .tire_intro_text h2 {
+        height: 6.1538vw;
+    }
+
+    .sticky_con_area .sticky_con_inner .tire_intro_text .text span {
+        font-size: 1.2rem;
+        padding: 1.6rem 1.2rem 3.2rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .tire_perform {
+        position: relative;
+        top: unset;
+        left: unset;
+        margin: 0;
+        transform: none;
+    }
+
+    .sticky_con_area .sticky_con_inner .center_text {
+        font-size: 3.2rem;
+        line-height: 1.25;
+        letter-spacing: 0.02rem;
+        padding: 0 2rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .center_text span {
+        display: inline;
+    }
+
+    .sticky_con_area .sticky_con_inner .perform_box {
+        position: relative;
+    }
+
+    .sticky_con_area .sticky_con_inner .perform_box p {
+        width: inherit;
+    }
+
+    .sticky_con_area .sticky_con_inner .perform_box p.title {
+        font-size: 2.2rem;
+        line-height: 1.36;
+        letter-spacing: 0.006rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .perform_box p.desc {
+        font-size: 1.6rem;
+        line-height: 1.63;
+        letter-spacing: -0.016rem;
+        margin-top: 0.8rem;
+        padding: 0 0 4.8rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .perform_box video {
+        display: none;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec {
+        height: calc(var(--app-height, 100vh) * 1.5);
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .img {
+        right: 2rem;
+        height: calc(var(--app-height, 100vh) * 0.3242 + 6.2rem);
+        margin-top: calc(var(--app-height, 100vh) * 0.5 + 8.4rem);
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .img.img1 span {
+        background-image: url("assets/ventus129/bg2_m.jpg");
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 {
+        top: calc(var(--app-height, 100vh) * 0.5 + 8.4rem);
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .img.img2 span {
+        background-image: url("assets/ventus129/bg1_m.jpg");
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: auto;
+        padding: 0 2rem 4.8rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div {
+        flex: none;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum {
+        position: relative;
+        left: 0;
+        font-size: 1.2rem;
+        font-style: inherit;
+        letter-spacing: -0.012rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum.spec_sum2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.left p.spec_sum br {
+        display: none;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right {
+        padding-right: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info {
+        position: relative;
+        right: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info.info2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_title {
+        width: inherit;
+        font-size: 2.4rem;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_desc {
+        width: inherit;
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+
+    .sticky_con_area .sticky_con_inner .sticky_spec .text_area>div.right .info p.spec_desc br {
+        display: none;
+    }
+
+    .sticky_con_area.text2 .sticky_con_inner .sticky_con p span {
+        display: inline;
+    }
+
+    .sticky_con_area.expanding1 .sticky_con_inner .sticky_con {
+        top: 11rem;
+        left: 0;
+    }
+
+    .sticky_con_area.expanding2 .sticky_con_inner .sticky_con {
+        transform: none;
+    }
+
+    .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con,
+    .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con,
+    .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con {
+        right: 0;
+        bottom: 0;
+    }
+
+    .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+    .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+    .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+        padding-right: 0;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner {
+        padding-top: calc(var(--app-height, 100vh) * 0.15);
+        margin-top: calc(var(--app-height, 100vh) * -0.06);
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+        top: 0;
+        left: 0;
+        bottom: unset;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con .perform_box {
+        margin-top: 3rem;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con .perform_box p.desc {
+        padding-right: 0;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div .bar {
+        width: 8.8rem;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p {
+        font-size: 1rem;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div p span {
+        font-size: 1rem;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.strong {
+        margin-top: calc(var(--app-height, 100vh) * 0.29);
+        margin-left: -20vw;
+    }
+
+    .sticky_con_area.speed_text4 .sticky_con_inner .handling_level_box>div.weak {
+        margin-top: calc(var(--app-height, 100vh) * 0.08);
+        margin-left: -10vw;
+    }
+
+    #tireEnding img {
+        position: relative;
+        left: 50%;
+        max-width: unset;
+        height: 100vw;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
+
+    #tireEnding img.pc {
+        display: none;
+    }
+
+    #tireEnding img.mobile {
+        display: block;
+    }
+
+    .nav-anchor#breaking {
+        padding-top: 50px;
+        margin-top: calc(var(--app-height, 100vh) * 0.4);
+    }
+
+    .nav-anchor#handling {
+        padding-top: 50px;
+        margin-top: calc(var(--app-height, 100vh) * 0.3);
+    }
+
+    .nav-anchor#stability {
+        padding-top: 50px;
+        margin-top: calc(var(--app-height, 100vh) * 1.2);
+    }
+}
+
+html[lang=ko] .sticky_con .ico-t {
+    vertical-align: middle;
+    transform: translateY(-1px);
+    margin-right: 0.4rem;
+}
+
+html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+html[dir=rtl] .sticky_con_area.speed_text2 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc,
+html[dir=rtl] .sticky_con_area.speed_text3 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+    padding-left: 8rem;
+    padding-right: unset;
+}
+
+html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+    padding-left: 11rem;
+    padding-right: unset;
+}
+
+html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+    right: 10.4167vw;
+    left: unset;
+}
+
+html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+    left: unset;
+}
+
+@media all and (max-width: 767px) {
+    html[dir=rtl] .sticky_con_area.speed_text4 .sticky_con_inner .sticky_con {
+        right: unset;
+    }
+}
+
+html[dir=rtl] .sticky_con_area.speed_text1 .sticky_con_inner .sticky_con.speed_text .perform_box p.desc {
+    padding-right: unset;
+    padding-left: 11rem;
+}
+
+.lds-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 500ms ease, left 2500ms ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+}
+
+.lds-bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    opacity: 0.5;
+}
+
+.lds-ring {
+    width: 64px;
+    height: 64px;
+    opacity: 1;
+    position: relative;
+}
+
+@media all and (max-width: 767px) {
+    .lds-ring {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.lds-ring-parts {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fd6720 transparent transparent transparent;
+    opacity: 1;
+}
+
+@media all and (max-width: 767px) {
+    .lds-ring-parts {
+        border: 3px solid;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fd6720 transparent transparent transparent;
+        opacity: 1;
+    }
+}
+
+.lds-ring-parts:nth-child(1) {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.lds-ring-parts:nth-child(3) {
+    animation-delay: 0.35s;
+}
+
+.lds-ring-parts:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.lds-ring-parts:nth-child(5) {
+    animation-delay: 0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.lds-loading-parts {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
